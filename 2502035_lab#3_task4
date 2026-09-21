@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int computers[2][3][5] =
+    {
+        {
+            {0, 1, 0, 1, 0},
+            {1, 0, 0, 1, 0},
+            {0, 0, 1, 0, 1}
+        },
+        {
+            {1, 0, 1, 0, 0},
+            {0, 1, 0, 1, 0},
+            {1, 0, 0, 0, 1}
+        }
+    };
+
+    int available = 0, inUse = 0;
+
+    for (int lab = 0; lab < 2; lab++)
+    {
+        cout << "Lab " << lab + 1 << ":" << endl;
+
+        for (int row = 0; row < 3; row++)
+        {
+            for (int computer = 0; computer < 5; computer++)
+            {
+                cout << computers[lab][row][computer] << " ";
+
+                if (computers[lab][row][computer] == 0)
+                    available++;
+                else
+                    inUse++;
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+
+    cout << "Total available computers: " << available << endl;
+    cout << "Total computers in use: " << inUse << endl;
+
+    for (int lab = 0; lab < 2; lab++)
+    {
+        int count = 0;
+
+        for (int row = 0; row < 3; row++)
+        {
+            for (int computer = 0; computer < 5; computer++)
+            {
+                if (computers[lab][row][computer] == 0)
+                    count++;
+            }
+        }
+
+        cout << "Available computers in Lab " << lab + 1 << ": " << count << endl;
+    }
+
+    int lab, row, computer;
+
+    cout << "\nEnter lab number: ";
+    cin >> lab;
+
+    cout << "Enter row number: ";
+    cin >> row;
+
+    cout << "Enter computer number: ";
+    cin >> computer;
+
+    cout << "Current status: ";
+
+    if (computers[lab - 1][row - 1][computer - 1] == 0)
+        cout << "Available" << endl;
+    else
+        cout << "In Use" << endl;
+
+    return 0;
+}
